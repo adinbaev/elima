@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Менин сунушум ❤</title>
+  <style>
+    :root {
+      --pink: #ff69b4;
+      --dark-pink: #d61c82;
+      --light: #fff8f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #ffe0ec, #f0f9ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--pink);
+      margin-bottom: 1rem;
+    }
+
+    .heart {
+      font-size: 3rem;
+      animation: pulse 1.5s infinite;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 2rem;
+    }
+
+    .button {
+      background: var(--pink);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background: var(--dark-pink);
+    }
+
+    .choice-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      background: var(--light);
+      border-radius: 1rem;
+      padding: 1.2rem;
+      margin-top: 1.5rem;
+      color: #333;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="kyrgyz_music.mp3" type="audio/mpeg">
+  Сиздин браузер аудио колдобойт.
+</audio>
+
+<div class="card">
+  <h1>Күңүлдүү сунуш №∞</h1>
+  <div class="heart">💖</div>
+  <p>Бүгүн сени бир кызыктуу кечеге чакыргым келип турат...</p>
+
+  <div class="choice-buttons">
+    <button class="button" onclick="showMessage('movie')">🎬 Фильмге баралы</button>
+    <button class="button" onclick="showMessage('horse')">🐎 Ат минүүгө баралы</button>
+    <button class="button" onclick="showMessage('bike')">🚴‍♀️ Велосипед сейилдөө</button>
+  </div>
+
+  <div id="messageBox" class="message hidden"></div>
+</div>
+
+<script>
+  const music = document.getElementById("bgMusic");
+  music.play().catch(() => console.log("Музика кол менен ойнотулат."));
+
+  function showMessage(choice) {
+    const box = document.getElementById("messageBox");
+    let text = "";
+    let link = "";
+
+    if (choice === "movie") {
+      text = "Фильмге барганда, эң алдыңкы катарда, попкорн менен отурабызбы? 🎥";
+      link = "https://www.instagram.com/p/DKtw7DiMzwg/";
+    } else if (choice === "horse") {
+      text = "Тоо этегинде ат менен сейилдеп, желге жуунганды элестетчи... 🌿";
+      link = "https://www.instagram.com/p/DHH3udVy2l7/";
+    } else if (choice === "bike") {
+      text = "Велосипед менен сейилдеп, анан балмуздак жейбизби? 🍦";
+      link = "https://www.youtube.com/shorts/3Y6bQd7XXXI";
+    }
+
+    box.innerHTML = `${text}<br><br><a href="${link}" class="button" target="_blank">Улантуу үчүн Instagram га өтүү →</a>`;
+    box.classList.remove("hidden");
+  }
+</script>
+
+</body>
+</html>
